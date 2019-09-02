@@ -18,46 +18,59 @@ public class Rationnel {
         this.denominateur = denominateur;
     }
 
+    @SuppressWarnings("unused")
     public String toString(){
         return numerateur + "/" + denominateur;
     }
 
+    @SuppressWarnings("unused")
     public Rationnel copy(){
         return new Rationnel(numerateur, denominateur);
     }
 
+    @SuppressWarnings("unused")
     public Rationnel opposite(){
         return new Rationnel(0 - numerateur, denominateur);
     }
 
+    @SuppressWarnings("unused")
     public Rationnel reduce(){
         int nouveauDenominateur = pgcd(numerateur, denominateur);
         int nouveauNumerateur = numerateur / nouveauDenominateur;
+
         return new Rationnel(nouveauNumerateur, nouveauDenominateur);
     }
 
+    @SuppressWarnings("unused")
     public boolean isPositive(){
         return numerateur * denominateur > 0;
     }
 
+    @SuppressWarnings("unused")
     public Rationnel add(Rationnel other){
         int denominateurCommun = denominateur * other.denominateur;
         int nouveauNumerateur = numerateur * other.denominateur;
+
         return new Rationnel(denominateurCommun, nouveauNumerateur);
     }
 
+    @SuppressWarnings("unused")
     public Rationnel multiply(Rationnel other){
         int nouveauNumerateur = numerateur * other.numerateur;
         int nouveauDenominateur= denominateur * other.denominateur;
+
         return new Rationnel(nouveauNumerateur, nouveauDenominateur);
     }
 
+    @SuppressWarnings("unused")
     public Rationnel divide(Rationnel other){
         int nouveauNumerateur = numerateur * other.denominateur;
         int nouveauDenominateur = denominateur * other.numerateur;
+
         return new Rationnel(nouveauNumerateur, nouveauDenominateur);
     }
 
+    @SuppressWarnings("unused")
     public Comparaison compareTo(Rationnel other){
         Rationnel thisReduced = reduce();
         Rationnel otherReduced = other.reduce();
