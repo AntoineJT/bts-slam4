@@ -1,6 +1,7 @@
-package com.github.antoinejt.sio2.rationnel;
+package com.github.antoinejt.sio2.slam4.rationnel;
 
 // TODO Fix this broken shit!
+// TODO Make some unit tests!
 public class Rationnel {
     public enum Comparaison {
         EGAL,

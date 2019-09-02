@@ -1,4 +1,4 @@
-package com.github.antoinejt.sio2.rationnel;
+package com.github.antoinejt.sio2.slam4.rationnel;
 
 public class Main {
     public static void main(String[] args) {
