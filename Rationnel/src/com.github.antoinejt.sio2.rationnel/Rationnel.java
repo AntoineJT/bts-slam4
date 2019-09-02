@@ -86,22 +86,6 @@ public class Rationnel {
         return Comparaison.EGAL;
     }
 
-    /*
-    // based on : https://codes-sources.commentcamarche.net/source/61729-pgcd-de-deux-nombres
-    // stupid thing, must not be placed here
-    private static int pgcd(int a, int b) {
-        int reste;
-
-        do {
-            reste = a % b;
-            a = b;
-            b = reste;
-        } while(reste != 0);
-
-        return b;
-    }
-     */
-
     private static int pgcd(int a, int b){
         if (b != 0){
             return pgcd(b, a % b);
