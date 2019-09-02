@@ -11,11 +11,15 @@ public class Rationnel {
     private final int denominateur;
 
     public Rationnel(int numerateur, int denominateur) throws IllegalArgumentException {
-        this.numerateur = numerateur;
         if (denominateur == 0){
             throw new IllegalArgumentException("Le dénominateur est égal à 0, or, il est impossible de diviser par 0!");
         }
-        this.denominateur = denominateur;
+
+        int reducedDenominateur = pgcd(numerateur, denominateur);
+        int diviseur = denominateur / reducedDenominateur;
+
+        this.numerateur = numerateur / diviseur;
+        this.denominateur = reducedDenominateur;
     }
 
     @SuppressWarnings("unused")
@@ -31,14 +35,6 @@ public class Rationnel {
     @SuppressWarnings("unused")
     public Rationnel opposite(){
         return new Rationnel(0 - numerateur, denominateur);
-    }
-
-    @SuppressWarnings("unused")
-    public Rationnel reduce(){
-        int nouveauDenominateur = pgcd(numerateur, denominateur);
-        int nouveauNumerateur = numerateur / nouveauDenominateur;
-
-        return new Rationnel(nouveauNumerateur, nouveauDenominateur);
     }
 
     @SuppressWarnings("unused")
