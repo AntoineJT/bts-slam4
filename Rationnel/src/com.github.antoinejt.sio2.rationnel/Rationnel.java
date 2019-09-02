@@ -1,5 +1,6 @@
 package com.github.antoinejt.sio2.rationnel;
 
+// TODO Fix this broken shit!
 public class Rationnel {
     public enum Comparaison {
         EGAL,
@@ -15,11 +16,16 @@ public class Rationnel {
             throw new IllegalArgumentException("Le dénominateur est égal à 0, or, il est impossible de diviser par 0!");
         }
 
-        int reducedDenominateur = pgcd(numerateur, denominateur);
-        int diviseur = denominateur / reducedDenominateur;
+        int denominateurReduit = pgcd(numerateur, denominateur);
+        int diviseur = 1;
 
+        // is this needed?
+        if (denominateur != denominateurReduit){
+            diviseur = denominateur / denominateurReduit;
+        }
         this.numerateur = numerateur / diviseur;
-        this.denominateur = reducedDenominateur;
+        // TODO Refactor that : what if denominateurReduit equals 1?
+        this.denominateur = denominateurReduit;
     }
 
     @SuppressWarnings("unused")
@@ -68,10 +74,8 @@ public class Rationnel {
 
     @SuppressWarnings("unused")
     public Comparaison compareTo(Rationnel other){
-        Rationnel thisReduced = reduce();
-        Rationnel otherReduced = other.reduce();
-        int thisSubstracted = thisReduced.numerateur - thisReduced.denominateur;
-        int otherSubstracted = otherReduced.numerateur - otherReduced.denominateur;
+        int thisSubstracted = numerateur - denominateur;
+        int otherSubstracted = other.numerateur - other.denominateur;
 
         if (thisSubstracted > otherSubstracted){
             return Comparaison.SUPERIEUR;
