@@ -61,7 +61,7 @@ public class Rationnel {
     @SuppressWarnings({"unused", "WeakerAccess"})
     public Rationnel multiply(Rationnel other){
         int nouveauNumerateur = numerateur * other.numerateur;
-        int nouveauDenominateur= denominateur * other.denominateur;
+        int nouveauDenominateur = denominateur * other.denominateur;
 
         return new Rationnel(nouveauNumerateur, nouveauDenominateur);
     }
