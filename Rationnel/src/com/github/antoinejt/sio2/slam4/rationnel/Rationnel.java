@@ -1,7 +1,6 @@
 package com.github.antoinejt.sio2.slam4.rationnel;
 
-// TODO Fix this broken shit!
-// TODO Make some unit tests!
+// TODO Make some unit tests! (maybe?)
 public class Rationnel {
     public enum Comparaison {
         EGAL,
@@ -12,21 +11,16 @@ public class Rationnel {
     private final int numerateur;
     private final int denominateur;
 
+    @SuppressWarnings("WeakerAccess")
     public Rationnel(int numerateur, int denominateur) throws IllegalArgumentException {
         if (denominateur == 0){
             throw new IllegalArgumentException("Le dénominateur est égal à 0, or, il est impossible de diviser par 0!");
         }
 
-        int denominateurReduit = pgcd(numerateur, denominateur);
-        int diviseur = 1;
+        int pgcd = pgcd(numerateur, denominateur);
 
-        // is this needed?
-        if (denominateur != denominateurReduit){
-            diviseur = denominateur / denominateurReduit;
-        }
-        this.numerateur = numerateur / diviseur;
-        // TODO Refactor that : what if denominateurReduit equals 1?
-        this.denominateur = denominateurReduit;
+        this.numerateur = numerateur / pgcd;
+        this.denominateur = denominateur / pgcd;
     }
 
     @SuppressWarnings("unused")
