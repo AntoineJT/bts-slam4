@@ -23,35 +23,42 @@ public class Rationnel {
         this.denominateur = denominateur / pgcd;
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "WeakerAccess"})
     public String toString(){
         return numerateur + "/" + denominateur;
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "WeakerAccess"})
     public Rationnel copy(){
         return new Rationnel(numerateur, denominateur);
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "WeakerAccess"})
     public Rationnel opposite(){
         return new Rationnel(0 - numerateur, denominateur);
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "WeakerAccess"})
     public boolean isPositive(){
         return numerateur * denominateur > 0;
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "WeakerAccess"})
     public Rationnel add(Rationnel other){
-        int denominateurCommun = denominateur * other.denominateur;
-        int nouveauNumerateur = numerateur * other.denominateur;
+        if (denominateur == other.denominateur){
+            int sommeNumerateurs = numerateur + other.numerateur;
+            return new Rationnel(sommeNumerateurs, denominateur);
+        }
 
-        return new Rationnel(denominateurCommun, nouveauNumerateur);
+        int nouveauThisNumerateur = numerateur * other.denominateur;
+        int nouveauOtherNumerateur = other.numerateur * denominateur;
+        int nouveauNumerateur = nouveauThisNumerateur + nouveauOtherNumerateur;
+        int denominateurCommun = denominateur * other.denominateur;
+
+        return new Rationnel(nouveauNumerateur, denominateurCommun);
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "WeakerAccess"})
     public Rationnel multiply(Rationnel other){
         int nouveauNumerateur = numerateur * other.numerateur;
         int nouveauDenominateur= denominateur * other.denominateur;
@@ -59,7 +66,8 @@ public class Rationnel {
         return new Rationnel(nouveauNumerateur, nouveauDenominateur);
     }
 
-    @SuppressWarnings("unused")
+    // TODO Do it : here is just a copy of multiply
+    @SuppressWarnings({"unused", "WeakerAccess"})
     public Rationnel divide(Rationnel other){
         int nouveauNumerateur = numerateur * other.denominateur;
         int nouveauDenominateur = denominateur * other.numerateur;
@@ -67,7 +75,7 @@ public class Rationnel {
         return new Rationnel(nouveauNumerateur, nouveauDenominateur);
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "WeakerAccess"})
     public Comparaison compareTo(Rationnel other){
         int thisSubstracted = numerateur - denominateur;
         int otherSubstracted = other.numerateur - other.denominateur;
