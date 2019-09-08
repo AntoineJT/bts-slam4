@@ -66,7 +66,6 @@ public class Rationnel {
         return new Rationnel(nouveauNumerateur, nouveauDenominateur);
     }
 
-    // TODO Do it : here is just a copy of multiply
     @SuppressWarnings({"unused", "WeakerAccess"})
     public Rationnel divide(Rationnel other){
         int nouveauNumerateur = numerateur * other.denominateur;
