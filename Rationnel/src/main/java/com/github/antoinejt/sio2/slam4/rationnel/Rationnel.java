@@ -1,7 +1,5 @@
 package com.github.antoinejt.sio2.slam4.rationnel;
 
-import org.junit.Test;
-
 // TODO Make some unit tests! (maybe?)
 public class Rationnel {
     public enum Comparaison {
