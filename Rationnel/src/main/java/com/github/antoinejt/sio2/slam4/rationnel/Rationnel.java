@@ -47,7 +47,7 @@ public class Rationnel {
 
     @SuppressWarnings({"unused", "WeakerAccess"})
     public boolean isPositive(){
-        return numerateur / denominateur > 0;
+        return numerateur > 0;
     }
 
     @SuppressWarnings({"unused", "WeakerAccess"})
