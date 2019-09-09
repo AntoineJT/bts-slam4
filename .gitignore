@@ -1,7 +1,10 @@
 
-
 # Ignore IntelliJ settings
 .idea/
+
 # Ignore binaries
 out/
 *.class 
+
+# Ignore Maven folders
+target/
