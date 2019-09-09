@@ -18,9 +18,16 @@ public class Rationnel {
         }
 
         int pgcd = pgcd(numerateur, denominateur);
+        int reducedNumerateur = numerateur / pgcd;
+        int reducedDenominateur = denominateur / pgcd;
 
-        this.numerateur = numerateur / pgcd;
-        this.denominateur = denominateur / pgcd;
+        if (reducedDenominateur < 0){
+            reducedDenominateur = -reducedDenominateur;
+            reducedNumerateur = -reducedNumerateur;
+        }
+
+        this.numerateur = reducedNumerateur;
+        this.denominateur = reducedDenominateur;
     }
 
     @SuppressWarnings({"unused", "WeakerAccess"})
@@ -40,10 +47,11 @@ public class Rationnel {
 
     @SuppressWarnings({"unused", "WeakerAccess"})
     public boolean isPositive(){
-        return numerateur * denominateur > 0;
+        return numerateur / denominateur > 0;
     }
 
     @SuppressWarnings({"unused", "WeakerAccess"})
+    // Note: denominateur can overflow...
     public Rationnel add(Rationnel other){
         if (denominateur == other.denominateur){
             int sommeNumerateurs = numerateur + other.numerateur;
@@ -76,16 +84,21 @@ public class Rationnel {
 
     @SuppressWarnings({"unused", "WeakerAccess"})
     public Comparaison compareTo(Rationnel other){
-        int thisSubstracted = numerateur - denominateur;
-        int otherSubstracted = other.numerateur - other.denominateur;
-
-        if (thisSubstracted > otherSubstracted){
-            return Comparaison.SUPERIEUR;
-        } else
-        if (thisSubstracted < otherSubstracted){
-            return Comparaison.INFERIEUR;
+        if (this.numerateur == other.numerateur
+            && this.denominateur == other.denominateur)
+        {
+            return Comparaison.EGAL;
         }
-        return Comparaison.EGAL;
+
+        int pgcd = pgcd(denominateur, other.denominateur);
+        int reducedThisNumerateur = numerateur / pgcd;
+        int reducedOtherNumerateur = other.numerateur / pgcd;
+        int substractedNumerateurs = reducedThisNumerateur - reducedOtherNumerateur;
+
+        if (substractedNumerateurs > 0){
+            return Comparaison.SUPERIEUR;
+        }
+        return Comparaison.INFERIEUR;
     }
 
     private static int pgcd(int a, int b){

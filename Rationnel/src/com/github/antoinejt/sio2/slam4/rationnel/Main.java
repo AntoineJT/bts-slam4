@@ -17,9 +17,9 @@ public class Main {
         Rationnel e = a.opposite();
         System.out.println(e);
 
-        /*
         Rationnel f = a.divide(b);
         System.out.println(f);
-         */
+
+        System.out.println(f.compareTo(e));
     }
 }
