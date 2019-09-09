@@ -1,5 +1,7 @@
 package com.github.antoinejt.sio2.slam4.rationnel;
 
+import org.junit.Test;
+
 // TODO Make some unit tests! (maybe?)
 public class Rationnel {
     public enum Comparaison {
@@ -10,6 +12,26 @@ public class Rationnel {
 
     private final int numerateur;
     private final int denominateur;
+
+    @SuppressWarnings("unused")
+    public int getNumerateur() {
+        return numerateur;
+    }
+
+    @SuppressWarnings("unused")
+    public int getDenominateur() {
+        return denominateur;
+    }
+
+    @SuppressWarnings("unused")
+    public Rationnel setNumerateur(int numerateur) {
+        return new Rationnel(numerateur, this.denominateur);
+    }
+
+    @SuppressWarnings("unused")
+    public Rationnel setDenominateur(int denominateur) {
+        return new Rationnel(this.numerateur, denominateur);
+    }
 
     @SuppressWarnings("WeakerAccess")
     public Rationnel(int numerateur, int denominateur) throws IllegalArgumentException {

@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+// TODO Make tests for setters
 public class RationnelTest {
     private Rationnel oneHalf = new Rationnel(1, 2);
     private Rationnel fourMinusFive = new Rationnel(4, -5);
